@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<code-generation>
+    <!--输出目录-->
+    <globalConfig>
+        <path>D:\Java\Project\Study\netty-cloud\netty-cloud-modules\netty-mybatis-plus-test</path>
+        <packageClass>mybatisplus</packageClass>
+        <projectName>lutw</projectName>
+    </globalConfig>
+    <!--数据库配置-->
+    <dataSource>
+        <driverName>com.mysql.jdbc.Driver</driverName>
+        <username>root</username>
+        <password>123456</password>
+        <url>jdbc:mysql://127.0.0.1:3306/netty_cloud?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false</url>
+        <!--可以传入多个，以逗号分割-->
+        <table>sys_user</table>
+    </dataSource>
+</code-generation>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.lutw</groupId>
+    <artifactId>netty-cloud</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>netty-cloud-common</module>
+        <module>netty-cloud-modules</module>
+        <module>netty-cloud-feign-api</module>
+    </modules>
+
+    <properties>
+        <lutw.version>1.0-SNAPSHOT</lutw.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-boot.version>2.6.3</spring-boot.version>
+        <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
+        <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+        <spring-cloud-start-plugin.version>3.1.3</spring-cloud-start-plugin.version>
+        <druid.version>1.2.6</druid.version>
+        <dynamic-ds.version>3.5.1</dynamic-ds.version>
+        <spring-boot.mybatis-plus.version>3.3.1</spring-boot.mybatis-plus.version>
+        <pagehelper-spring-boot-starter.version>1.4.1</pagehelper-spring-boot-starter.version>
+        <swagger.version>3.0.0</swagger.version>
+        <java.version>1.8</java.version>
+        <common-pool.version>2.11.1</common-pool.version>
+        <fastjson.version>1.2.75</fastjson.version>
+        <commons.io.version>2.5</commons.io.version>
+        <commons.fileupload.version>1.3.3</commons.fileupload.version>
+        <poi.version>4.1.2</poi.version>
+    </properties>
+
+    <!-- 依赖声明 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- SpringBoot 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!-- SpringCloud 微服务 -->
+            <!--<dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>-->
+
+            <!-- SpringCloud Alibaba 微服务 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <!--SpringCloud Feign在Hoxton.M2 RELEASED版本之后不再使用ribbon。使用loadbalancer-->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.cloud</groupId>
+                        <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                    </exclusion>
+                </exclusions>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud-start-plugin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${spring-cloud-start-plugin.version}</version>
+            </dependency>
+            <!--spring-cloud-dependencies 2020.0.0 版本不在默认加载bootstrap 文件，如果需要加载bootstrap 文件需要手动添加依赖-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-bootstrap</artifactId>
+                <version>${spring-cloud-start-plugin.version}</version>
+            </dependency>
+
+            <!-- mybatis plus 代码生成器 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${spring-boot.mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${spring-boot.mybatis-plus.version}</version>
+            </dependency>
+            <!-- 分页 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- Swagger 依赖配置 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- JSON 解析器和生成器 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- 公共资源池 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${common-pool.version}</version>
+            </dependency>
+
+            <!-- io常用工具类 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+
+            <!-- 工具 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!-- 文件上传工具类 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons.fileupload.version}</version>
+            </dependency>
+
+            <!-- ===========================系统依赖================================ -->
+            <!-- 核心 -->
+            <dependency>
+                <groupId>com.lutw</groupId>
+                <artifactId>netty-common-core</artifactId>
+                <version>${lutw.version}</version>
+            </dependency>
+            <!-- 多数据源 -->
+            <dependency>
+                <groupId>com.lutw</groupId>
+                <artifactId>netty-common-datasource</artifactId>
+                <version>${lutw.version}</version>
+            </dependency>
+            <!-- redis -->
+            <dependency>
+                <groupId>com.lutw</groupId>
+                <artifactId>netty-common-redis</artifactId>
+                <version>${lutw.version}</version>
+            </dependency>
+
+            <!-- swagger -->
+            <dependency>
+                <groupId>com.lutw</groupId>
+                <artifactId>netty-common-swagger</artifactId>
+                <version>${lutw.version}</version>
+            </dependency>
+
+            <!-- netty-test-api -->
+            <dependency>
+                <groupId>com.lutw</groupId>
+                <artifactId>netty-cloud-test-api</artifactId>
+                <version>${lutw.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

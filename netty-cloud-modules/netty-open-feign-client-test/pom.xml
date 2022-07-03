@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>netty-cloud-modules</artifactId>
+        <groupId>com.lutw</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>netty-open-feign-client-test</artifactId>
+
+    <dependencies>
+        <!-- SpringCloud Ailibaba Nacos 服务发现 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-cloud-commons</artifactId>
+                    <groupId>org.springframework.cloud</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--负载均衡-->
+        <!--解决：Did you forget to include spring-cloud-starter-loadbalancer?-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+        <!--spring-cloud-dependencies 2020.0.0 版本不在默认加载bootstrap 文件，如果需要加载bootstrap 文件需要手动添加依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+
+        <!-- SpringCloud Ailibaba Nacos Config 配置中心 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-cloud-commons</artifactId>
+                    <groupId>org.springframework.cloud</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--================系统依赖=====================-->
+        <dependency>
+            <groupId>com.lutw</groupId>
+            <artifactId>netty-common-datasource</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lutw</groupId>
+            <artifactId>netty-common-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lutw</groupId>
+            <artifactId>netty-cloud-test-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lutw</groupId>
+            <artifactId>netty-common-swagger</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
